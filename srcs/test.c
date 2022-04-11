@@ -30,9 +30,9 @@ void	fill_stack_a(t_data *all, char **args)
 {
 	int	i;
 
-	all->size = get_size(args);
-	all->a = ft_calloc(all->size + 1, sizeof(int));
-	all->b = ft_calloc(all->size + 1, sizeof(int));
+	all->size_a = get_size(args);
+	all->a = ft_calloc(all->size_a + 1, sizeof(int));
+	all->b = ft_calloc(all->size_a + 1, sizeof(int));
 	if (!all->a || !all->b)
 		quit(all, "error : malloc");
 	i = 0;
@@ -52,7 +52,7 @@ void	print_stack_a(t_data *all)
 	int	i;
 
 	i = 0;
-	while (i < all->size)
+	while (i < all->size_a)
 	{
 		ft_printf("%d\n", all->a[i]);
 		i++;
