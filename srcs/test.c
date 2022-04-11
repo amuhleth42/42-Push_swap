@@ -51,12 +51,39 @@ void	print_stack_a(t_data *all)
 {
 	int	i;
 
+	ft_printf("A : size:%d\n", all->size_a);
 	i = 0;
 	while (i < all->size_a)
 	{
 		ft_printf("%d\n", all->a[i]);
 		i++;
 	}
+}
+
+void	print_stack_b(t_data *all)
+{
+	int	i;
+
+	ft_printf("B : size:%d\n", all->size_b);
+	i = 0;
+	while (i < all->size_b)
+	{
+		ft_printf("%d\n", all->b[i]);
+		i++;
+	}
+}
+
+void	print(t_data *all)
+{
+	print_stack_a(all);
+	print_stack_b(all);
+	ft_printf("\n");
+}
+
+void	test_moves(t_data *all)
+{
+	rra(all);
+	print(all);
 }
 
 int	main(int argc, char **argv)
@@ -70,6 +97,7 @@ int	main(int argc, char **argv)
 		fill_stack_a(&all, ft_split(argv[1], ' '));
 	else
 		fill_stack_a(&all, argv + 1);
-	print_stack_a(&all);
+	print(&all);
+	test_moves(&all);
 	return (0);
 }

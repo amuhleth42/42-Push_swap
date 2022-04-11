@@ -5,6 +5,7 @@ INCL	= -I. -I./libft
 LIB		= -L./libft -lft
 
 SRCS	= $(addprefix srcs/,	\
+			moves.c				\
 			test.c)
 
 all :		$(NAME)
