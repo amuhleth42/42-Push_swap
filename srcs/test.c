@@ -7,30 +7,40 @@ void	die(char *message)
 	exit(EXIT_FAILURE);
 }
 
-int	count_elem(char **nbs)
+void	quit(t_data *all, char *message)
+{
+	if (all->a)
+		free(all->a);
+	if (all->b)
+		free(all->b);
+	die(message);
+}
+
+int	get_size(char **args)
 {
 	int	i;
 
 	i = 0;
-	while (nbs[i] != NULL)
+	while (args[i] != NULL)
 		i++;
 	return (i);
 }
 
-void	fill_stack_a(t_data *all, char **nbs)
+void	fill_stack_a(t_data *all, char **args)
 {
-	int	size;
 	int	i;
 
-	size = count_elem(nbs);
-	all->a = ft_calloc(size + 1, sizeof(int));
-	all->b = ft_calloc(size + 1, sizeof(int));
+	all->size = get_size(args);
+	all->a = ft_calloc(all->size + 1, sizeof(int));
+	all->b = ft_calloc(all->size + 1, sizeof(int));
 	if (!all->a || !all->b)
-		die("error : malloc");
+		quit(all, "error : malloc");
 	i = 0;
-	while (nbs[i] != NULL)
+	while (args[i] != NULL)
 	{
-		all->a[i] = ft_atoi(nbs[i]);
+		all->a[i] = ft_atoi(args[i]);
+		if (all->a[i] == 0 && args[i][0] != '0')
+			quit(all, "Error");
 		i++;
 	}
 	
@@ -42,7 +52,7 @@ void	print_stack_a(t_data *all)
 	int	i;
 
 	i = 0;
-	while (all->a[i] != 0)
+	while (i < all->size)
 	{
 		ft_printf("%d\n", all->a[i]);
 		i++;

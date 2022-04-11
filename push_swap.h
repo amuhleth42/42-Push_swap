@@ -9,6 +9,7 @@ typedef struct s_data
 {
 	int	*a;
 	int	*b;
+	int	size;
 }		t_data;
 
 #endif
