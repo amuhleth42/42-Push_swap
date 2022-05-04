@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:21:40 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/04 20:46:30 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/04 22:09:14 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	fill_stack_a(t_sort *sort, char **args)
 {
 	int	i;
 
-	sort->size_a = get_size(args);
+	sort->size = get_size(args);
+	sort->size_a = sort->size;
 	sort->a = ft_calloc(sort->size_a + 1, sizeof(int));
 	sort->b = ft_calloc(sort->size_a + 1, sizeof(int));
 	if (!sort->a || !sort->b)

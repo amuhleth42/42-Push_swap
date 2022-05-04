@@ -9,6 +9,8 @@ SRCS	= $(addprefix srcs/,	\
 			moves2.c			\
 			moves3.c			\
 			parsing.c			\
+			exit.c				\
+			utils_test.c		\
 			sort.c				\
 			test.c)
 

@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:36:16 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/04 20:47:43 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/04 22:07:44 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+# include <limits.h>
 
 typedef struct s_sort
 {
 	int 	*a;
 	int		*b;
+	int		size;
 	int		size_a;
 	int		size_b;
 	int		score;
@@ -50,5 +52,9 @@ int		get_size(char **args);
 void	fill_stack_a(t_sort *sort, char **args);
 
 void	sort(t_sort *sort, int i);
+
+void	print_stack_a(t_sort *sort);
+void	print_stack_b(t_sort *sort);
+void	print_stacks(t_sort *sort);
 
 #endif
