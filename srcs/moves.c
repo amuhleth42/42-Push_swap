@@ -6,11 +6,34 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:47:51 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/04 20:31:17 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/04 22:39:36 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	op(t_sort *sort, char *cmd)
+{
+	if (!ft_strncmp(cmd, "sa", 5))
+		sa(sort);
+	if (!ft_strncmp(cmd, "sb", 5))
+		sb(sort);
+	if (!ft_strncmp(cmd, "pa", 5))
+		pa(sort);
+	if (!ft_strncmp(cmd, "pb", 5))
+		pb(sort);
+	if (!ft_strncmp(cmd, "ra", 5))
+		ra(sort);
+	if (!ft_strncmp(cmd, "rb", 5))
+		rb(sort);
+	if (!ft_strncmp(cmd, "rra", 5))
+		rra(sort);
+	if (!ft_strncmp(cmd, "rrb", 5))
+		rrb(sort);
+	ft_lstadd_back(&sort->solution, ft_lstnew(cmd));
+	ft_printf("%s\n", cmd);
+	sort->score++;
+}
 
 void	sa(t_sort *sort)
 {
@@ -40,54 +63,4 @@ void	ss(t_sort *sort)
 {
 	sa(sort);
 	sb(sort);
-}
-
-void	pa(t_sort *sort)
-{
-	int	i;
-
-	if (sort->size_b > 0)
-	{
-		i = sort->size_a;
-		while (i > 0)
-		{
-			sort->a[i] = sort->a[i - 1];
-			i--;
-		}
-		sort->a[0] = sort->b[0];
-		i = 1;
-		while (i < sort->size_b)
-		{
-			sort->b[i - 1] = sort->b[i];
-			i++;
-		}
-		sort->b[i - 1] = 0;
-		sort->size_a++;
-		sort->size_b--;
-	}
-}
-
-void	pb(t_sort *sort)
-{
-	int	i;
-
-	if (sort->size_a > 0)
-	{
-		i = sort->size_b;
-		while (i > 0)
-		{
-			sort->b[i] = sort->b[i - 1];
-			i--;
-		}
-		sort->b[0] = sort->a[0];
-		i = 1;
-		while (i < sort->size_a)
-		{
-			sort->a[i - 1] = sort->a[i];
-			i++;
-		}
-		sort->a[i - 1] = 0;
-		sort->size_b++;
-		sort->size_a--;
-	}
 }

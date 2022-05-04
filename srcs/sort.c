@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:39:31 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/04 22:15:32 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/04 22:56:43 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,26 @@ int	get_smallest(t_sort *sort)
 		i++;
 	}
 	return (smallest);
+}
+
+int	is_sorted(t_sort *sort)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < sort->size)
+	{
+		j = i + 1;
+		while (j < sort->size)
+		{
+			if (sort->a[i] > sort->a[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 void	normalize_stack(t_sort *sort)
@@ -58,37 +78,24 @@ void	normalize_stack(t_sort *sort)
 
 void	radix(t_sort *sort)
 {
-	int	max_bits;
 	int	i;
 	int	j;
 
 	normalize_stack(sort);
-	max_bits = 0;
-	while (((sort->size - 1) >> max_bits) != 0)
-		max_bits++;
 	i = 0;
-	while (i < max_bits)
+	while (!is_sorted(sort))
 	{
 		j = 0;
 		while (j < sort->size)
 		{
 			if (((sort->a[0] >> i) & 1) == 1)
-			{
-				ra(sort);
-				ft_printf("ra\n");
-			}
+				op(sort, "ra");
 			else
-			{
-				pb(sort);
-				ft_printf("pb\n");
-			}
+				op(sort, "pb");
 			j++;
 		}
 		while (sort->size_b > 0)
-		{
-			pa(sort);
-			ft_printf("pa\n");
-		}
+			op(sort, "pa");
 		i++;
 	}
 }

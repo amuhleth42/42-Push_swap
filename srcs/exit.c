@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:19:07 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/04 21:36:56 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/04 22:41:23 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,21 @@ void	die(char *message)
 	exit(EXIT_FAILURE);
 }
 
-//to redo
-/*
 void	quit(t_data *all, char *message)
 {
-	if (all->a)
-		free(all->a);
-	if (all->b)
-		free(all->b);
+	int	i;
+
+	i = 0;
+	while (all->sorts + i)
+	{
+		if (all->sorts[i].a)
+			free(all->sorts[i].a);
+		if (all->sorts[i].b)
+			free(all->sorts[i].b);
+		ft_lstclear(&all->sorts[i].solution, &free);
+		i++;
+	}
+	if (all->sorts)
+		free(all->sorts);
 	die(message);
-}*/
+}

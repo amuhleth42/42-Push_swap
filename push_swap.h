@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:36:16 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/04 22:07:44 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/04 22:35:20 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_data
 	t_sort	*sorts;
 }		t_data;
 
+void	op(t_sort *sort, char *cmd);
 void	sa(t_sort *sort);
 void	sb(t_sort *sort);
 void	ss(t_sort *sort);
