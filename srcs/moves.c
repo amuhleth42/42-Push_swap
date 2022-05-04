@@ -122,10 +122,10 @@ void	pa(t_data *all)
 
 	if (all->size_b > 0)
 	{
-		i = all->size_a - 1;
+		i = all->size_a;
 		while (i > 0)
 		{
-			all->a[] = all->a[i - 1];
+			all->a[i] = all->a[i - 1];
 			i--;
 		}
 		all->a[0] = all->b[0];
@@ -147,10 +147,10 @@ void	pb(t_data *all)
 
 	if (all->size_a > 0)
 	{
-		i = all->size_b - 1;
+		i = all->size_b;
 		while (i > 0)
 		{
-			all->b[] = all->b[i - 1];
+			all->b[i] = all->b[i - 1];
 			i--;
 		}
 		all->b[0] = all->a[0];

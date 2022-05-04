@@ -22,5 +22,7 @@ void	rr(t_data *all);
 void	rra(t_data *all);
 void	rrb(t_data *all);
 void	rrr(t_data *all);
+void	pa(t_data *all);
+void	pb(t_data *all);
 
 #endif

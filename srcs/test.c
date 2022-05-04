@@ -82,7 +82,14 @@ void	print(t_data *all)
 
 void	test_moves(t_data *all)
 {
-	rra(all);
+	pb(all);
+	pb(all);
+	pb(all);
+	pb(all);
+	pa(all);
+	pa(all);
+	pa(all);
+	pa(all);
 	print(all);
 }
 
