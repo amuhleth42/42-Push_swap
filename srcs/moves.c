@@ -115,3 +115,53 @@ void	rrr(t_data *all)
 	rra(all);
 	rrb(all);
 }
+
+void	pa(t_data *all)
+{
+	int	i;
+
+	if (all->size_b > 0)
+	{
+		i = all->size_a - 1;
+		while (i > 0)
+		{
+			all->a[] = all->a[i - 1];
+			i--;
+		}
+		all->a[0] = all->b[0];
+		i = 1;
+		while (i < all->size_b)
+		{
+			all->b[i - 1] = all->b[i];
+			i++;
+		}
+		all->b[i - 1] = 0;
+		all->size_a++;
+		all->size_b--;
+	}
+}
+
+void	pb(t_data *all)
+{
+	int	i;
+
+	if (all->size_a > 0)
+	{
+		i = all->size_b - 1;
+		while (i > 0)
+		{
+			all->b[] = all->b[i - 1];
+			i--;
+		}
+		all->b[0] = all->a[0];
+		i = 1;
+		while (i < all->size_a)
+		{
+			all->a[i - 1] = all->a[i];
+			i++;
+		}
+		all->a[i - 1] = 0;
+		all->size_b++;
+		all->size_a--;
+	}
+}
