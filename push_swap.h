@@ -1,28 +1,54 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/04 19:36:16 by amuhleth          #+#    #+#             */
+/*   Updated: 2022/05/04 20:47:43 by amuhleth         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include "libft.h"
 
+typedef struct s_sort
+{
+	int 	*a;
+	int		*b;
+	int		size_a;
+	int		size_b;
+	int		score;
+	t_list	*solution;
+}			t_sort;
+
 typedef struct s_data
 {
-	int	*a;
-	int	*b;
-	int	size_a;
-	int	size_b;
+	int		size;
+	t_sort	*sorts;
 }		t_data;
 
-void	sa(t_data *all);
-void	sb(t_data *all);
-void	ss(t_data *all);
-void	ra(t_data *all);
-void	rb(t_data *all);
-void	rr(t_data *all);
-void	rra(t_data *all);
-void	rrb(t_data *all);
-void	rrr(t_data *all);
-void	pa(t_data *all);
-void	pb(t_data *all);
+void	sa(t_sort *sort);
+void	sb(t_sort *sort);
+void	ss(t_sort *sort);
+void	ra(t_sort *sort);
+void	rb(t_sort *sort);
+void	rr(t_sort *sort);
+void	rra(t_sort *sort);
+void	rrb(t_sort *sort);
+void	rrr(t_sort *sort);
+void	pa(t_sort *sort);
+void	pb(t_sort *sort);
+
+void	die(char *message);
+void	quit(t_data *all, char *message);
+
+int		get_size(char **args);
+void	fill_stack_a(t_sort *sort, char **args);
+
+void	sort(t_sort *sort, int i);
 
 #endif

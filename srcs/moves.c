@@ -1,167 +1,93 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/04 18:47:51 by amuhleth          #+#    #+#             */
+/*   Updated: 2022/05/04 20:31:17 by amuhleth         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_data *all)
+void	sa(t_sort *sort)
 {
 	int	tmp;
 
-	if (all->size_a > 1)
+	if (sort->size_a > 1)
 	{
-		tmp = all->a[0];
-		all->a[0] = all->a[1];
-		all->a[1] = tmp;
+		tmp = sort->a[0];
+		sort->a[0] = sort->a[1];
+		sort->a[1] = tmp;
 	}
 }
 
-void	sb(t_data *all)
+void	sb(t_sort *sort)
 {
 	int	tmp;
 
-	if (all->size_b > 1)
+	if (sort->size_b > 1)
 	{
-		tmp = all->b[0];
-		all->b[0] = all->b[1];
-		all->b[1] = tmp;
+		tmp = sort->b[0];
+		sort->b[0] = sort->b[1];
+		sort->b[1] = tmp;
 	}
 }
 
-void	ss(t_data *all)
+void	ss(t_sort *sort)
 {
-	sa(all);
-	sb(all);
+	sa(sort);
+	sb(sort);
 }
 
-void	ra(t_data *all)
+void	pa(t_sort *sort)
 {
-	int	tmp;
 	int	i;
 
-	if (all->size_a > 1)
+	if (sort->size_b > 0)
 	{
-		tmp = all->a[0];
-		i = 1;
-		while (i < all->size_a)
-		{
-			all->a[i - 1] = all->a[i];
-			i++;
-		}
-		all->a[i - 1] = tmp;
-	}
-}
-
-void	rb(t_data *all)
-{
-	int	tmp;
-	int	i;
-
-	if (all->size_b > 1)
-	{
-		tmp = all->b[0];
-		i = 1;
-		while (i < all->size_b)
-		{
-			all->b[i - 1] = all->b[i];
-			i++;
-		}
-		all->b[i - 1] = tmp;
-	}
-}
-
-void	rr(t_data *all)
-{
-	ra(all);
-	rb(all);
-}
-
-void	rra(t_data *all)
-{
-	int	tmp;
-	int	i;
-
-	if (all->size_a > 1)
-	{
-		i = all->size_a - 1;
-		tmp = all->a[i];
+		i = sort->size_a;
 		while (i > 0)
 		{
-			all->a[i] = all->a[i - 1];
+			sort->a[i] = sort->a[i - 1];
 			i--;
 		}
-		all->a[0] = tmp;
-	}
-}
-
-void	rrb(t_data *all)
-{
-	int	tmp;
-	int	i;
-
-	if (all->size_b > 1)
-	{
-		i = all->size_b - 1;
-		tmp = all->b[i];
-		while (i > 0)
-		{
-			all->b[i] = all->b[i - 1];
-			i--;
-		}
-		all->b[0] = tmp;
-	}
-}
-
-void	rrr(t_data *all)
-{
-	rra(all);
-	rrb(all);
-}
-
-void	pa(t_data *all)
-{
-	int	i;
-
-	if (all->size_b > 0)
-	{
-		i = all->size_a;
-		while (i > 0)
-		{
-			all->a[i] = all->a[i - 1];
-			i--;
-		}
-		all->a[0] = all->b[0];
+		sort->a[0] = sort->b[0];
 		i = 1;
-		while (i < all->size_b)
+		while (i < sort->size_b)
 		{
-			all->b[i - 1] = all->b[i];
+			sort->b[i - 1] = sort->b[i];
 			i++;
 		}
-		all->b[i - 1] = 0;
-		all->size_a++;
-		all->size_b--;
+		sort->b[i - 1] = 0;
+		sort->size_a++;
+		sort->size_b--;
 	}
 }
 
-void	pb(t_data *all)
+void	pb(t_sort *sort)
 {
 	int	i;
 
-	if (all->size_a > 0)
+	if (sort->size_a > 0)
 	{
-		i = all->size_b;
+		i = sort->size_b;
 		while (i > 0)
 		{
-			all->b[i] = all->b[i - 1];
+			sort->b[i] = sort->b[i - 1];
 			i--;
 		}
-		all->b[0] = all->a[0];
+		sort->b[0] = sort->a[0];
 		i = 1;
-		while (i < all->size_a)
+		while (i < sort->size_a)
 		{
-			all->a[i - 1] = all->a[i];
+			sort->a[i - 1] = sort->a[i];
 			i++;
 		}
-		all->a[i - 1] = 0;
-		all->size_b++;
-		all->size_a--;
+		sort->a[i - 1] = 0;
+		sort->size_b++;
+		sort->size_a--;
 	}
 }

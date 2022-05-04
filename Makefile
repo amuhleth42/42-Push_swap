@@ -6,6 +6,10 @@ LIB		= -L./libft -lft
 
 SRCS	= $(addprefix srcs/,	\
 			moves.c				\
+			moves2.c			\
+			moves3.c			\
+			parsing.c			\
+			sort.c				\
 			test.c)
 
 all :		$(NAME)

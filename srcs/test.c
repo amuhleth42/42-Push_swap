@@ -1,52 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/04 18:48:07 by amuhleth          #+#    #+#             */
+/*   Updated: 2022/05/04 20:39:24 by amuhleth         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	die(char *message)
-{
-	ft_putendl_fd(message, 2);
-	exit(EXIT_FAILURE);
-}
-
-void	quit(t_data *all, char *message)
-{
-	if (all->a)
-		free(all->a);
-	if (all->b)
-		free(all->b);
-	die(message);
-}
-
-int	get_size(char **args)
-{
-	int	i;
-
-	i = 0;
-	while (args[i] != NULL)
-		i++;
-	return (i);
-}
-
-void	fill_stack_a(t_data *all, char **args)
-{
-	int	i;
-
-	all->size_a = get_size(args);
-	all->a = ft_calloc(all->size_a + 1, sizeof(int));
-	all->b = ft_calloc(all->size_a + 1, sizeof(int));
-	if (!all->a || !all->b)
-		quit(all, "error : malloc");
-	i = 0;
-	while (args[i] != NULL)
-	{
-		all->a[i] = ft_atoi(args[i]);
-		if (all->a[i] == 0 && args[i][0] != '0')
-			quit(all, "Error");
-		i++;
-	}
-	
-
-}
-
+/*
 void	print_stack_a(t_data *all)
 {
 	int	i;
@@ -79,32 +44,51 @@ void	print(t_data *all)
 	print_stack_b(all);
 	ft_printf("\n");
 }
+*/
 
-void	test_moves(t_data *all)
+void	print_winner(t_sort *sort)
 {
-	pb(all);
-	pb(all);
-	pb(all);
-	pb(all);
-	pa(all);
-	pa(all);
-	pa(all);
-	pa(all);
-	print(all);
+	ft_printf("Score : %d\n", sort->score);
+}
+
+void	process(t_data *all, char **args)
+{
+	int	i;
+	int	score_min;
+	int	winner;
+
+	all->sorts = ft_calloc(3, sizeof(t_sort));
+	if (!all->sorts)
+	{
+		//free all
+		die("malloc error");
+	}
+	i = 0;
+	while (i++ < 1)
+	{
+		fill_stack_a(&all->sorts[i], args);
+		sort(&all->sorts[i], i);
+		if (score_min > all->sorts[i].score)
+			winner = i;
+	}
+	print_winner(&all->sorts[winner]);
 }
 
 int	main(int argc, char **argv)
 {
 	t_data	all;
+	char	**argv2;
 
 	ft_bzero(&all, sizeof(all));
 	if (argc < 2)
 		die("Please enter a list of number");
 	if (argc == 2)
-		fill_stack_a(&all, ft_split(argv[1], ' '));
+	{
+		argv2 = ft_split(argv[1], ' ');
+		process(&all, argv2);
+		//free argv2
+	}
 	else
-		fill_stack_a(&all, argv + 1);
-	print(&all);
-	test_moves(&all);
+		process(&all, argv + 1);
 	return (0);
 }
