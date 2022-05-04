@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:48:07 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/04 21:39:13 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/04 23:05:21 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&all, sizeof(all));
 	if (argc < 2)
-		die("Please enter a list of number");
+		die("Error");
 	if (argc == 2)
 	{
 		argv2 = ft_split(argv[1], ' ');
