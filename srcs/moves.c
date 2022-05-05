@@ -31,8 +31,17 @@ void	op(t_sort *sort, char *cmd)
 	if (!ft_strncmp(cmd, "rrb", 5))
 		rrb(sort);
 	ft_lstadd_back(&sort->solution, ft_lstnew(cmd));
-	ft_printf("%s\n", cmd);
+	//ft_printf("%s\n", cmd);
 	sort->score++;
+}
+
+void	multi_op(t_sort *sort, char *cmd, int nb)
+{
+	while (nb > 0)
+	{
+		op(sort, cmd);
+		nb--;
+	}
 }
 
 void	sa(t_sort *sort)

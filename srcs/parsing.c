@@ -22,7 +22,7 @@ int	get_size(char **args)
 	return (i);
 }
 
-void	fill_stack_a(t_sort *sort, char **args)
+void	fill_stack_a(t_data *all, t_sort *sort, char **args)
 {
 	int	i;
 

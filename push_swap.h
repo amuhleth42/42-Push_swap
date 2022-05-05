@@ -16,6 +16,17 @@
 # include "libft.h"
 # include <limits.h>
 
+typedef struct s_chunk
+{
+	int	size;
+	int	max;
+	int min;
+	int	last_max;
+	int	last_min;
+	int	push_min;
+	int	push_min_count;
+}		t_chunk;
+
 typedef struct s_sort
 {
 	int 	*a;
@@ -34,6 +45,7 @@ typedef struct s_data
 }		t_data;
 
 void	op(t_sort *sort, char *cmd);
+void	multi_op(t_sort *sort, char *cmd, int nb);
 void	sa(t_sort *sort);
 void	sb(t_sort *sort);
 void	ss(t_sort *sort);
@@ -50,7 +62,7 @@ void	die(char *message);
 void	quit(t_data *all, char *message);
 
 int		get_size(char **args);
-void	fill_stack_a(t_sort *sort, char **args);
+void	fill_stack_a(t_data *all, t_sort *sort, char **args);
 
 void	sort(t_sort *sort, int i);
 
