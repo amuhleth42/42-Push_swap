@@ -263,6 +263,8 @@ void	sort(t_sort *sort, int i)
 {
 	if (i == 0)
 		radix(sort);
+	else if (i == 1)
+		wheel_sort(sort);
 	else
 	{
 		op(sort, "pa");

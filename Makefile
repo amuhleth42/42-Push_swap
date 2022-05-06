@@ -13,6 +13,7 @@ SRCS	= $(addprefix srcs/,	\
 			utils_test.c		\
 			sort.c				\
 			list_opti.c			\
+			wheel_sort.c		\
 			test.c)
 
 all :		$(NAME)

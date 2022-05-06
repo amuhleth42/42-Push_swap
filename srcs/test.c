@@ -32,7 +32,7 @@ void	process(t_data *all, char **args)
 		die("malloc error");
 	}
 	i = 1;
-	while (i < 12)
+	while (i < 2)
 	{
 		fill_stack_a(all, &all->sorts[i], args);
 		sort(&all->sorts[i], i);

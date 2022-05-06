@@ -16,6 +16,16 @@
 # include "libft.h"
 # include <limits.h>
 
+typedef struct s_wheel
+{
+	int	value;
+	int	ra;
+	int	rra;
+	int	rb;
+	int	rrb;
+	int	score;
+}		t_wheel;
+
 typedef struct s_chunk
 {
 	int	size;
@@ -71,5 +81,8 @@ void	print_stack_b(t_sort *sort);
 void	print_stacks(t_sort *sort);
 void	print_list(t_sort *sort);
 
+void	normalize_stack(t_sort *sort);
 void	optimize_solution(t_sort *sort);
+
+void	wheel_sort(t_sort *sort);
 #endif
