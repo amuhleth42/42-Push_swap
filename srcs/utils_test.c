@@ -12,6 +12,19 @@
 
 #include "push_swap.h"
 
+void	print_list(t_sort *sort)
+{
+	t_list	*tmp;
+
+	tmp = sort->solution;
+	while (sort->solution)
+	{
+		ft_printf("%s\n", sort->solution->content);
+		sort->solution = sort->solution->next;
+	}
+	sort->solution = tmp;
+}
+
 void	print_stack_a(t_sort *sort)
 {
 	int	i;

@@ -240,7 +240,8 @@ void	sort_chunk_back(t_sort *sort, t_chunk *c)
 			c->push_min = 0;
 		}
 	}
-	while (c->last_min <= sort->a[0] && sort->a[0] <= c->last_max && c->last_max != sort->size - 1)
+	while (c->last_min <= sort->a[0] && sort->a[0] <= c->last_max
+		&& c->last_max != sort->size - 1)
 		op(sort, "ra");
 }
 
@@ -253,14 +254,9 @@ void	big_sort(t_sort *sort, int size_chunk)
 	while (!is_sorted(sort))
 	{
 		set_chunk(sort, &c, size_chunk);
-		//print_stacks(sort);
 		push_chunk_to_b(sort, &c);
-		//print_stacks(sort);
 		sort_chunk_back(sort, &c);
-		//print_stacks(sort);
 	}
-	//print_stacks(sort);
-
 }
 
 void	sort(t_sort *sort, int i)
@@ -268,5 +264,16 @@ void	sort(t_sort *sort, int i)
 	if (i == 0)
 		radix(sort);
 	else
-		big_sort(sort, i * 5);
+	{
+		op(sort, "pa");
+		op(sort, "ra");
+		op(sort, "rb");
+		op(sort, "pa");
+		op(sort, "pa");
+		op(sort, "pb");
+	}
+		//big_sort(sort, i * 5);
+	ft_printf("Score : %d ", ft_lstsize(sort->solution));
+	optimize_solution(sort);
+	ft_printf("-> %d\n", ft_lstsize(sort->solution));
 }

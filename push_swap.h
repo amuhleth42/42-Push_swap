@@ -69,5 +69,7 @@ void	sort(t_sort *sort, int i);
 void	print_stack_a(t_sort *sort);
 void	print_stack_b(t_sort *sort);
 void	print_stacks(t_sort *sort);
+void	print_list(t_sort *sort);
 
+void	optimize_solution(t_sort *sort);
 #endif

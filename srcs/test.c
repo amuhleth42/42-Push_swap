@@ -15,6 +15,7 @@
 void	print_winner(t_sort *sort)
 {
 	ft_printf("Score : %d\n", sort->score);
+	//print_list(sort);
 }
 
 void	process(t_data *all, char **args)
@@ -30,12 +31,12 @@ void	process(t_data *all, char **args)
 		//free all
 		die("malloc error");
 	}
-	i = 0;
-	while (i < 30)
+	i = 1;
+	while (i < 12)
 	{
 		fill_stack_a(all, &all->sorts[i], args);
 		sort(&all->sorts[i], i);
-		ft_printf("Scorex : %d\n", all->sorts[i].score);
+		//ft_printf("Scorex : %d\n", all->sorts[i].score);
 		if (all->sorts[i].score < score_min)
 		{
 			score_min = all->sorts[i].score;

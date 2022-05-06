@@ -1,6 +1,6 @@
 NAME	= push_swap
 
-FLAGS	= -Wall -Wextra -Werror -Ofast
+FLAGS	= -Wall -Wextra -Werror -Ofast -g
 INCL	= -I. -I./libft
 LIB		= -L./libft -lft
 
@@ -12,6 +12,7 @@ SRCS	= $(addprefix srcs/,	\
 			exit.c				\
 			utils_test.c		\
 			sort.c				\
+			list_opti.c			\
 			test.c)
 
 all :		$(NAME)
