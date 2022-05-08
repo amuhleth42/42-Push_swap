@@ -73,15 +73,15 @@ void	get_score(t_wheel *info)
 	info->score = info->ra + info->rrb;
 	if (info->score > (info->rra + info->rb))
 		info->score = info->rra + info->rb;
-	if (info->score > (info->ra + info->rb - commun_r))
-	{
-		info->score = info->ra + info->rb - commun_r;
-		info->todo = 1;
-	}
 	if (info->score > (info->rra + info->rrb - commun_rr))
 	{
 		info->score = info->rra + info->rrb - commun_rr;
 		info->todo = -1;
+	}
+	if (info->score > (info->ra + info->rb - commun_r))
+	{
+		info->score = info->ra + info->rb - commun_r;
+		info->todo = 1;
 	}
 }
 
@@ -112,27 +112,66 @@ void	get_data(t_sort *sort, t_wheel *info)
 	}
 }
 
-void	push_best_score(t_sort *sort, t_wheel *info)
+void	do_r(t_sort *sort, t_wheel *info)
 {
-	if (info->todo == 1)
+	while (info->ra && info->rb)
 	{
-		while (info->ra && info->rb)
-		{
-			op(sort, "rr");
-			info->ra--;
-			info->rb--;
-		}
+		op(sort, "rr");
+		info->ra--;
+		info->rb--;
+	}
+	while (info->ra--)
+		op(sort, "ra");
+	while (info->rb--)
+		op(sort, "rb");
+}
+
+void	do_rr(t_sort *sort, t_wheel *info)
+{
+	while (info->rra && info->rrb)
+	{
+		op(sort, "rrr");
+		info->rra--;
+		info->rrb--;
+	}
+	while (info->rra--)
+		op(sort, "rra");
+	while (info->rrb--)
+		op(sort, "rrb");
+}
+
+void	do_mix(t_sort *sort, t_wheel *info)
+{
+	if (info->ra + info->rrb < info->rra + info->rb)
+	{
 		while (info->ra--)
 			op(sort, "ra");
+		while (info->rrb--)
+			op(sort, "rrb");
+	}
+	else
+	{
+		while (info->rra--)
+			op(sort, "rra");
 		while (info->rb--)
 			op(sort, "rb");
 	}
 }
 
+void	push_best_score(t_sort *sort, t_wheel *info)
+{
+	if (info->todo == 1)
+		do_r(sort, info);
+	else if (info->todo == -1)
+		do_rr(sort, info);
+	else
+		do_mix(sort, info);
+	wheel_pb(sort);
+}
+
 void	wheel_sort(t_sort *sort)
 {
 	t_wheel	*info;
-	int	i;
 
 	info = ft_calloc(sort->size, sizeof(t_wheel));
 	normalize_stack(sort);
@@ -140,16 +179,21 @@ void	wheel_sort(t_sort *sort)
 	sort->biggest = INT_MIN;
 	wheel_pb(sort);
 	wheel_pb(sort);
-	i = 0;
-	get_data(sort, info);
-	while (sort->size_a && i < sort->size_a)
+	while (sort->size_a)
 	{
 		get_data(sort, info);
+		//ft_printf("Best : %d\n", sort->best);
+		//ft_printf("Best score : %d\n", sort->best_score);
+		//ft_printf("Todo : %d\n", info[sort->best].todo);
+		//ft_printf("\n");
 		push_best_score(sort, &info[sort->best]);
-		i++;
+		//print_stacks(sort);
 	}
+	while (sort->b[0] != sort->biggest)
+		op(sort, "rb");
 	while (sort->size_b)
 	{
 		op(sort, "pa");
 	}
+	print_stacks(sort);
 }
