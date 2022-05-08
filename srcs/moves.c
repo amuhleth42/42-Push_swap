@@ -32,7 +32,7 @@ void	op(t_sort *sort, char *cmd)
 		rrb(sort);
 	ft_lstadd_back(&sort->solution, ft_lstnew(cmd));
 	//ft_printf("%s\n", cmd);
-	sort->score++;
+	sort->sort_score++;
 }
 
 void	multi_op(t_sort *sort, char *cmd, int nb)

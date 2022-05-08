@@ -24,6 +24,7 @@ typedef struct s_wheel
 	int	rb;
 	int	rrb;
 	int	score;
+	int	todo;
 }		t_wheel;
 
 typedef struct s_chunk
@@ -44,7 +45,11 @@ typedef struct s_sort
 	int		size;
 	int		size_a;
 	int		size_b;
-	int		score;
+	int		smallest;
+	int		biggest;
+	int		best;
+	int		best_score;
+	int		sort_score;
 	t_list	*solution;
 }			t_sort;
 

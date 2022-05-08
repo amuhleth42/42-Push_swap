@@ -1,6 +1,6 @@
 NAME	= push_swap
 
-FLAGS	= -Wall -Wextra -Werror -Ofast -g
+FLAGS	= -Wall -Wextra -Werror -Ofast
 INCL	= -I. -I./libft
 LIB		= -L./libft -lft
 

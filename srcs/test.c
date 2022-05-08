@@ -14,7 +14,7 @@
 
 void	print_winner(t_sort *sort)
 {
-	ft_printf("Score : %d\n", sort->score);
+	ft_printf("Score : %d\n", sort->sort_score);
 	//print_list(sort);
 }
 
@@ -37,9 +37,9 @@ void	process(t_data *all, char **args)
 		fill_stack_a(all, &all->sorts[i], args);
 		sort(&all->sorts[i], i);
 		//ft_printf("Scorex : %d\n", all->sorts[i].score);
-		if (all->sorts[i].score < score_min)
+		if (all->sorts[i].sort_score < score_min)
 		{
-			score_min = all->sorts[i].score;
+			score_min = all->sorts[i].sort_score;
 			winner = i;
 		}
 		i++;
