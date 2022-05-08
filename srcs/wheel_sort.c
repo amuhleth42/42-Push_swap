@@ -117,13 +117,20 @@ void	do_r(t_sort *sort, t_wheel *info)
 	while (info->ra && info->rb)
 	{
 		op(sort, "rr");
+		//ft_printf("rr\n");
 		info->ra--;
 		info->rb--;
 	}
 	while (info->ra--)
+	{
 		op(sort, "ra");
+		//ft_printf("ra\n");
+	}
 	while (info->rb--)
+	{
 		op(sort, "rb");
+		//ft_printf("rb\n");
+	}
 }
 
 void	do_rr(t_sort *sort, t_wheel *info)
@@ -182,10 +189,6 @@ void	wheel_sort(t_sort *sort)
 	while (sort->size_a)
 	{
 		get_data(sort, info);
-		//ft_printf("Best : %d\n", sort->best);
-		//ft_printf("Best score : %d\n", sort->best_score);
-		//ft_printf("Todo : %d\n", info[sort->best].todo);
-		//ft_printf("\n");
 		push_best_score(sort, &info[sort->best]);
 		//print_stacks(sort);
 	}
@@ -195,5 +198,5 @@ void	wheel_sort(t_sort *sort)
 	{
 		op(sort, "pa");
 	}
-	print_stacks(sort);
+	//print_stacks(sort);
 }

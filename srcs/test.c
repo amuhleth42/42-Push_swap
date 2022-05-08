@@ -32,11 +32,11 @@ void	process(t_data *all, char **args)
 		die("malloc error");
 	}
 	i = 1;
-	while (i < 2)
+	while (i < 10)
 	{
 		fill_stack_a(all, &all->sorts[i], args);
 		sort(&all->sorts[i], i);
-		//ft_printf("Scorex : %d\n", all->sorts[i].score);
+		ft_printf("Scorex : %d\n", all->sorts[i].sort_score);
 		if (all->sorts[i].sort_score < score_min)
 		{
 			score_min = all->sorts[i].sort_score;

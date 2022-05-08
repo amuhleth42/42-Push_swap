@@ -30,6 +30,10 @@ void	op(t_sort *sort, char *cmd)
 		rra(sort);
 	if (!ft_strncmp(cmd, "rrb", 5))
 		rrb(sort);
+	if (!ft_strncmp(cmd, "rr", 5))
+		rr(sort);
+	if (!ft_strncmp(cmd, "rrr", 5))
+		rrr(sort);
 	ft_lstadd_back(&sort->solution, ft_lstnew(cmd));
 	//ft_printf("%s\n", cmd);
 	sort->sort_score++;

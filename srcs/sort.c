@@ -263,19 +263,12 @@ void	sort(t_sort *sort, int i)
 {
 	if (i == 0)
 		radix(sort);
-	else if (i == 1)
-		wheel_sort(sort);
 	else
 	{
-		op(sort, "pa");
-		op(sort, "ra");
-		op(sort, "rb");
-		op(sort, "pa");
-		op(sort, "pa");
-		op(sort, "pb");
+		while (--i)
+			op(sort, "ra");
+		wheel_sort(sort);
 	}
 		//big_sort(sort, i * 5);
-	ft_printf("Score : %d ", ft_lstsize(sort->solution));
-	optimize_solution(sort);
-	ft_printf("-> %d\n", ft_lstsize(sort->solution));
+	//optimize_solution(sort);
 }
