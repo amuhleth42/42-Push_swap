@@ -10,10 +10,11 @@ SRCS	= $(addprefix srcs/,	\
 			moves3.c			\
 			parsing.c			\
 			exit.c				\
-			utils_test.c		\
+			print.c				\
+			atol.c				\
 			sort.c				\
 			wheel_sort.c		\
-			test.c)
+			main.c)
 
 all :		$(NAME)
 
