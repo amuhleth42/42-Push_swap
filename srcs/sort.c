@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:39:31 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/04 22:56:43 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:18:35 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,5 +270,4 @@ void	sort(t_sort *sort, int i)
 		wheel_sort(sort);
 	}
 		//big_sort(sort, i * 5);
-	//optimize_solution(sort);
 }

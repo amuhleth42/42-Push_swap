@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wheel_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/09 15:44:41 by amuhleth          #+#    #+#             */
+/*   Updated: 2022/05/09 16:15:12 by amuhleth         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void	wheel_pb(t_sort *sort)
 {
@@ -62,6 +74,7 @@ void	get_score(t_wheel *info)
 	int	commun_r;
 	int	commun_rr;
 
+	info->todo = 0;
 	if (info->ra > info->rb)
 		commun_r = info->rb;
 	else
@@ -117,19 +130,19 @@ void	do_r(t_sort *sort, t_wheel *info)
 	while (info->ra && info->rb)
 	{
 		op(sort, "rr");
-		//ft_printf("rr\n");
+		//printf("rr\n");
 		info->ra--;
 		info->rb--;
 	}
 	while (info->ra--)
 	{
 		op(sort, "ra");
-		//ft_printf("ra\n");
+		//printf("ra\n");
 	}
 	while (info->rb--)
 	{
 		op(sort, "rb");
-		//ft_printf("rb\n");
+		//printf("rb\n");
 	}
 }
 
@@ -138,13 +151,20 @@ void	do_rr(t_sort *sort, t_wheel *info)
 	while (info->rra && info->rrb)
 	{
 		op(sort, "rrr");
+		//printf("rrr\n");
 		info->rra--;
 		info->rrb--;
 	}
 	while (info->rra--)
+	{
+		//printf("rra\n");
 		op(sort, "rra");
+	}
 	while (info->rrb--)
+	{
+		//printf("rrb\n");
 		op(sort, "rrb");
+	}
 }
 
 void	do_mix(t_sort *sort, t_wheel *info)
@@ -152,16 +172,28 @@ void	do_mix(t_sort *sort, t_wheel *info)
 	if (info->ra + info->rrb < info->rra + info->rb)
 	{
 		while (info->ra--)
+		{
+			//printf("ra\n");
 			op(sort, "ra");
+		}
 		while (info->rrb--)
+		{
+			//printf("rrb\n");
 			op(sort, "rrb");
+		}
 	}
 	else
 	{
 		while (info->rra--)
+		{
+			//printf("rra\n");
 			op(sort, "rra");
+		}
 		while (info->rb--)
+		{
+			//printf("rb\n");
 			op(sort, "rb");
+		}
 	}
 }
 
@@ -189,6 +221,7 @@ void	wheel_sort(t_sort *sort)
 	while (sort->size_a)
 	{
 		get_data(sort, info);
+		//printf("Best: %d, todo: %d, score:%d, ra:%d, rb:%d, rra:%d, rrb:%d\n", sort->best, info[sort->best].todo, info[sort->best].score, info[sort->best].ra, info[sort->best].rb, info[sort->best].rra, info[sort->best].rrb);
 		push_best_score(sort, &info[sort->best]);
 		//print_stacks(sort);
 	}
