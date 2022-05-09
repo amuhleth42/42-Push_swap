@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:36:16 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/09 18:49:16 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:05:38 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,7 @@ void	optimize_solution(t_sort *sort);
 void	wheel_sort(t_sort *sort, t_data *all);
 
 long	ft_atol(const char *str);
+
+void	sort_small(t_sort *sort, t_data *all);
 
 #endif

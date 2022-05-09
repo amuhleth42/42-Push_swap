@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:39:31 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/09 16:50:59 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:07:42 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,9 @@ void	radix(t_sort *sort, t_data *all)
 
 void	sort(t_sort *sort, int i, t_data *all)
 {
-	if (i == 0)
+	/*if (sort->size < 6)
+		sort_small(sort, all);
+	else*/ if (i == 0)
 		radix(sort, all);
 	else
 	{
