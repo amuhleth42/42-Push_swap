@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:44:41 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/09 17:17:48 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:52:05 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,15 @@ void	wheel_pb(t_sort *sort)
 
 void	get_info_for_a(t_sort *sort, t_wheel *info, int i)
 {
+	/*if (i <= sort->size_a / 2)
+		info->ra = i;
+	else
+		info->rra = sort->size_a - i;*/
 	info->ra = i;
 	info->rra = sort->size_a - i;
 }
+
+//si je trouve un maniere de faire marcher cette fonction jsuis un giga boss
 
 int	right_place(t_sort *sort, t_wheel *info)
 {
@@ -52,6 +58,10 @@ void	get_info_for_b(t_sort *sort, t_wheel *info)
 			rb(sort);
 			i++;
 		}
+		/*if (i <= sort->size_b / 2)
+			info->rb = i;
+		else
+			info->rrb = sort->size_b - i;*/
 		info->rb = i;
 		info->rrb = sort->size_b - i;
 		while (i-- > 0)
@@ -105,6 +115,12 @@ void	get_data(t_sort *sort, t_wheel *info)
 			sort->best_score = info[i].score;
 			sort->best = i;
 		}
+		//ft_printf("Value %d : ", info[i].value);
+		//ft_printf("%d ", info[i].ra);
+		//ft_printf("%d : ", info[i].rra);
+		//ft_printf("%d ", info[i].rb);
+		//ft_printf("%d :", info[i].rrb);
+		//ft_printf(" s = %d\n", info[i].score);
 		i++;
 	}
 }
@@ -114,13 +130,20 @@ void	do_r(t_sort *sort, t_wheel *info)
 	while (info->ra && info->rb)
 	{
 		op(sort, "rr");
+		//printf("rr\n");
 		info->ra--;
 		info->rb--;
 	}
 	while (info->ra--)
+	{
 		op(sort, "ra");
+		//printf("ra\n");
+	}
 	while (info->rb--)
+	{
 		op(sort, "rb");
+		//printf("rb\n");
+	}
 }
 
 void	do_rr(t_sort *sort, t_wheel *info)
@@ -128,13 +151,20 @@ void	do_rr(t_sort *sort, t_wheel *info)
 	while (info->rra && info->rrb)
 	{
 		op(sort, "rrr");
+		//printf("rrr\n");
 		info->rra--;
 		info->rrb--;
 	}
 	while (info->rra--)
+	{
+		//printf("rra\n");
 		op(sort, "rra");
+	}
 	while (info->rrb--)
+	{
+		//printf("rrb\n");
 		op(sort, "rrb");
+	}
 }
 
 void	do_mix(t_sort *sort, t_wheel *info)
@@ -142,16 +172,28 @@ void	do_mix(t_sort *sort, t_wheel *info)
 	if (info->ra + info->rrb < info->rra + info->rb)
 	{
 		while (info->ra--)
+		{
+			//printf("ra\n");
 			op(sort, "ra");
+		}
 		while (info->rrb--)
+		{
+			//printf("rrb\n");
 			op(sort, "rrb");
+		}
 	}
 	else
 	{
 		while (info->rra--)
+		{
+			//printf("rra\n");
 			op(sort, "rra");
+		}
 		while (info->rb--)
+		{
+			//printf("rb\n");
 			op(sort, "rb");
+		}
 	}
 }
 
@@ -181,7 +223,9 @@ void	wheel_sort(t_sort *sort, t_data *all)
 	while (sort->size_a)
 	{
 		get_data(sort, info);
+		//printf("Best: %d, todo: %d, score:%d, ra:%d, rb:%d, rra:%d, rrb:%d\n", sort->best, info[sort->best].todo, info[sort->best].score, info[sort->best].ra, info[sort->best].rb, info[sort->best].rra, info[sort->best].rrb);
 		push_best_score(sort, &info[sort->best]);
+		//print_stacks(sort);
 	}
 	while (sort->b[0] != sort->biggest)
 		op(sort, "rb");
@@ -189,6 +233,5 @@ void	wheel_sort(t_sort *sort, t_data *all)
 	{
 		op(sort, "pa");
 	}
-	if (info)
-		free(info);
+	//print_stacks(sort);
 }

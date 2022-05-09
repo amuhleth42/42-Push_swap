@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:47:51 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/04 22:39:36 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:57:09 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	op(t_sort *sort, char *cmd)
 	if (!ft_strncmp(cmd, "rrr", 5))
 		rrr(sort);
 	ft_lstadd_back(&sort->solution, ft_lstnew(cmd));
-	//ft_printf("%s\n", cmd);
 	sort->sort_score++;
 }
 

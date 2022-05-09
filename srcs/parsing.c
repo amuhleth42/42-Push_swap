@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:21:40 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/04 23:06:14 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:16:07 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	fill_stack_a(t_data *all, t_sort *sort, char **args)
 	sort->a = ft_calloc(sort->size_a + 1, sizeof(int));
 	sort->b = ft_calloc(sort->size_a + 1, sizeof(int));
 	if (!sort->a || !sort->b)
-		quit(all, "error");
+		quit(all, "Malloc error");
 	i = 0;
 	while (args[i] != NULL)
 	{

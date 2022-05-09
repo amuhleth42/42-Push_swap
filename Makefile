@@ -12,7 +12,6 @@ SRCS	= $(addprefix srcs/,	\
 			exit.c				\
 			utils_test.c		\
 			sort.c				\
-			list_opti.c			\
 			wheel_sort.c		\
 			test.c)
 

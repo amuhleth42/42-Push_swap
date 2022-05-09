@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:36:16 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/04 22:35:20 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:02:42 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_chunk
 {
 	int	size;
 	int	max;
-	int min;
+	int	min;
 	int	last_max;
 	int	last_min;
 	int	push_min;
@@ -40,7 +40,7 @@ typedef struct s_chunk
 
 typedef struct s_sort
 {
-	int 	*a;
+	int		*a;
 	int		*b;
 	int		size;
 	int		size_a;
@@ -75,19 +75,20 @@ void	pb(t_sort *sort);
 
 void	die(char *message);
 void	quit(t_data *all, char *message);
+void	free_split(char **argv2);
 
 int		get_size(char **args);
 void	fill_stack_a(t_data *all, t_sort *sort, char **args);
 
-void	sort(t_sort *sort, int i);
+void	sort(t_sort *sort, int i, t_data *all);
 
 void	print_stack_a(t_sort *sort);
 void	print_stack_b(t_sort *sort);
 void	print_stacks(t_sort *sort);
 void	print_list(t_sort *sort);
 
-void	normalize_stack(t_sort *sort);
+void	normalize_stack(t_sort *sort, t_data *all);
 void	optimize_solution(t_sort *sort);
 
-void	wheel_sort(t_sort *sort);
+void	wheel_sort(t_sort *sort, t_data *all);
 #endif
