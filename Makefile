@@ -5,7 +5,7 @@ IFLAG	= -I. -I./libft
 LIB		= -L./libft -lft
 
 SRCS_DIR	= srcs
-OBJS_DIR	= objs
+OBJS_DIR	= $(shell mkdir -p objs && printf "objs")
 
 SRCS	=	moves.c				\
 			moves2.c			\
@@ -33,7 +33,7 @@ libft.a :
 
 clean :
 	make fclean -C ./libft
-	rm -rf $(OBJS_DIR)/*.o
+	rm -rf $(OBJS_DIR)
 	rm $(NAME)
 
 fclean :	clean
