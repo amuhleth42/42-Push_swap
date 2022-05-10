@@ -6,25 +6,11 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 19:02:11 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/10 18:07:47 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:46:51 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	sort5(t_sort *sort)
-{
-	(void) sort;
-	ft_printf("Broo!\n");
-	exit(EXIT_FAILURE);
-}
-
-int	sort4(t_sort *sort)
-{
-	(void) sort;
-	ft_printf("Broo!\n");
-	exit(EXIT_FAILURE);
-}
 
 int	form_3(t_sort *sort, int first, int sec, int last)
 {
@@ -47,8 +33,43 @@ void	sort3(t_sort *sort)
 		op(sort, "ra");
 }
 
+void	sort4(t_sort *sort)
+{
+	int	small;
+
+	small = get_smallest(sort);
+	if (small == sort->a[1])
+		op(sort, "ra");
+	else if (small == sort->a[2])
+		multi_op(sort, "ra", 2);
+	else if (small == sort->a[3])
+		op(sort, "rra");
+	op(sort, "pb");
+	sort3(sort);
+	op(sort, "pa");
+}
+
+void	sort5(t_sort *sort)
+{
+	int	small;
+
+	small = get_smallest(sort);
+	if (small == sort->a[1])
+		op(sort, "ra");
+	else if (small == sort->a[2])
+		multi_op(sort, "ra", 2);
+	else if (small == sort->a[3])
+		multi_op(sort, "rra", 2);
+	else if (small == sort->a[4])
+		op(sort, "rra");
+	op(sort, "pb");
+	sort4(sort);
+	op(sort, "pa");
+}
+
 void	sort_small(t_sort *sort, t_data *all)
 {
+	(void) all;
 	if (sort->size == 2)
 	{
 		if (!is_sorted(sort))
@@ -58,7 +79,6 @@ void	sort_small(t_sort *sort, t_data *all)
 		sort3(sort);
 	else if (sort->size == 4)
 		sort4(sort);
-	else
+	else if (sort->size == 5)
 		sort5(sort);
-	quit(all, "");
 }

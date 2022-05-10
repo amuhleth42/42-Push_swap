@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:19:07 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/09 17:15:10 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:26:56 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	quit(t_data *all, char *message)
 	int	i;
 
 	i = 0;
+	if (!all->sorts)
+		die(message);
 	while (i < 11)
 	{
 		if (all->sorts[i].a)

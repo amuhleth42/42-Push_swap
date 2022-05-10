@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:32:48 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/10 18:07:03 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:56:44 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	process(t_data *all, char **args)
 	if (!all->sorts)
 		quit(all, "malloc error");
 	i = 0;
-	while (i < 10)
+	while (i < 4)
 	{
 		fill_stack_a(all, &all->sorts[i], args);
 		if (all->sorts[i].size < 6)

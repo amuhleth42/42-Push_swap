@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:36:16 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/10 18:14:12 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:44:56 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	fill_stack_a(t_data *all, t_sort *sort, char **args);
 
 void	sort(t_sort *sort, int i, t_data *all);
 int		is_sorted(t_sort *sort);
+int		get_smallest(t_sort *sort);
 
 void	print_stack_a(t_sort *sort);
 void	print_stack_b(t_sort *sort);
