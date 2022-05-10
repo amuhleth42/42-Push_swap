@@ -15,6 +15,7 @@ SRCS	=	moves.c				\
 			print.c				\
 			atol.c				\
 			sort.c				\
+			sort_small.c		\
 			wheel_sort.c		\
 			main.c
 
@@ -23,10 +24,10 @@ OBJS	= $(SRCS:%.c=$(OBJS_DIR)/%.o)
 all :		$(NAME)
 
 $(OBJS_DIR)/%.o :	$(SRCS_DIR)/%.c
-	gcc $(CFLAGS) $(IFLAG) -c $< -o $@
+	gcc $(CFLAGS) $(IFLAG) -c $< -o $@ -g
 
 $(NAME) :	libft.a $(OBJS)
-	gcc $(FLAGS) $(IFLAG) $(LIB) $(OBJS) -o $(NAME)
+	gcc $(CFLAGS) $(IFLAG) $(LIB) $(OBJS) -o $(NAME) -g
 
 libft.a :
 	make -C ./libft
