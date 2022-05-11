@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:32:48 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/11 16:46:00 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/11 17:28:36 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	process(t_data *all, char **args)
 	int	i;
 	int	winner;
 
-	all->sorts = ft_calloc(11, sizeof(t_sort));
+	all->sorts = ft_calloc(5, sizeof(t_sort));
 	if (!all->sorts)
 		quit(all, "malloc error");
 	i = 0;
@@ -62,5 +62,7 @@ int	main(int argc, char **argv)
 	}
 	else
 		process(&all, argv + 1);
+	if (all.sorts)
+		free_sorts(&all);
 	return (0);
 }

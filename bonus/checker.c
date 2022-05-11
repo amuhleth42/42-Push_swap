@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 15:38:22 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/11 16:34:41 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/11 17:23:18 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,41 @@ void	parsing(t_sort *sort, char **args)
 	}
 }
 
+void	quit_error(t_sort *sort, char *cmd)
+{
+	if (cmd)
+		free(cmd);
+	if (sort->a)
+		free(sort->a);
+	if (sort->b)
+		free(sort->b);
+	die("Error");
+}
+
 void	op_checker(t_sort *sort, char *cmd)
 {
-	if (!ft_strncmp(cmd, "sa", 5))
+	if (!ft_strncmp(cmd, "sa", 3))
 		sa(sort);
-	if (!ft_strncmp(cmd, "sb", 5))
+	else if (!ft_strncmp(cmd, "sb", 3))
 		sb(sort);
-	if (!ft_strncmp(cmd, "pa", 5))
+	else if (!ft_strncmp(cmd, "pa", 3))
 		pa(sort);
-	if (!ft_strncmp(cmd, "pb", 5))
+	else if (!ft_strncmp(cmd, "pb", 3))
 		pb(sort);
-	if (!ft_strncmp(cmd, "ra", 5))
+	else if (!ft_strncmp(cmd, "ra", 3))
 		ra(sort);
-	if (!ft_strncmp(cmd, "rb", 5))
+	else if (!ft_strncmp(cmd, "rb", 3))
 		rb(sort);
-	if (!ft_strncmp(cmd, "rra", 5))
+	else if (!ft_strncmp(cmd, "rra", 4))
 		rra(sort);
-	if (!ft_strncmp(cmd, "rrb", 5))
+	else if (!ft_strncmp(cmd, "rrb", 4))
 		rrb(sort);
-	if (!ft_strncmp(cmd, "rr", 5))
+	else if (!ft_strncmp(cmd, "rr", 3))
 		rr(sort);
-	if (!ft_strncmp(cmd, "rrr", 5))
+	else if (!ft_strncmp(cmd, "rrr", 4))
 		rrr(sort);
+	else
+		quit_error(sort, cmd);
 }
 
 void	checker(char **args)

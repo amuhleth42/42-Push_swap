@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:19:07 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/11 16:59:25 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/11 17:32:00 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	free_sorts(t_data *all)
 	int	i;
 
 	i = 0;
-	while (i < 11)
+	while (i < 4)
 	{
 		if (all->sorts[i].a)
 		{
@@ -52,7 +52,8 @@ void	free_sorts(t_data *all)
 			free(all->sorts[i].b);
 			all->sorts[i].b = NULL;
 		}
-		ft_lstclear(&all->sorts[i].solution, &free);
+		if (all->sorts[i].solution)
+			ft_lstclear(&all->sorts[i].solution, &free);
 		i++;
 	}
 	if (all->sorts)

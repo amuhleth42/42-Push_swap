@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:36:16 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/11 16:56:03 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/11 17:27:17 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	pb(t_sort *sort);
 void	die(char *message);
 void	quit(t_data *all, char *message);
 void	free_split(char **argv2);
+void	free_sorts(t_data *all);
 
 int		get_size(char **args);
 int		check_duplicates(t_sort *sort, int i);
