@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:34:38 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/09 17:34:58 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/11 20:02:05 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 void	print_list(t_sort *sort)
 {
-	t_list	*tmp;
+	t_list	*p;
 
-	tmp = sort->solution;
-	while (sort->solution)
+	p = sort->solution;
+	while (p)
 	{
-		ft_printf("%s\n", sort->solution->content);
-		sort->solution = sort->solution->next;
+		ft_printf("%s\n", p->content);
+		p = p->next;
 	}
-	sort->solution = tmp;
 }
 
 void	print_stack_a(t_sort *sort)

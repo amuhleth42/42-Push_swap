@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:19:07 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/11 17:32:00 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/11 20:07:52 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void	free_split(char **argv2)
 	argv2 = NULL;
 }
 
+void	del_nul(void *nul)
+{
+	(void) nul;
+}
+
 void	free_sorts(t_data *all)
 {
 	int	i;
@@ -53,7 +58,7 @@ void	free_sorts(t_data *all)
 			all->sorts[i].b = NULL;
 		}
 		if (all->sorts[i].solution)
-			ft_lstclear(&all->sorts[i].solution, &free);
+			ft_lstclear(&all->sorts[i].solution, &del_nul);
 		i++;
 	}
 	if (all->sorts)
