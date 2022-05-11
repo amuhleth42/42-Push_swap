@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:32:48 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/10 18:56:44 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/11 16:46:00 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ void	print_winner(t_sort *sort)
 void	process(t_data *all, char **args)
 {
 	int	i;
-	int	score_min;
 	int	winner;
 
-	score_min = INT_MAX;
 	all->sorts = ft_calloc(11, sizeof(t_sort));
 	if (!all->sorts)
 		quit(all, "malloc error");
@@ -37,9 +35,9 @@ void	process(t_data *all, char **args)
 			break ;
 		}
 		sort(&all->sorts[i], i, all);
-		if (all->sorts[i].sort_score < score_min)
+		if (all->sorts[i].sort_score < all->score_min)
 		{
-			score_min = all->sorts[i].sort_score;
+			all->score_min = all->sorts[i].sort_score;
 			winner = i;
 		}
 		i++;
@@ -53,6 +51,7 @@ int	main(int argc, char **argv)
 	char	**argv2;
 
 	ft_bzero(&all, sizeof(all));
+	all.score_min = INT_MAX;
 	if (argc < 2)
 		die("Error");
 	if (argc == 2)

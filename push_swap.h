@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:36:16 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/10 18:44:56 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/11 16:56:03 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_sort
 typedef struct s_data
 {
 	int		size;
+	int		score_min;
 	t_sort	*sorts;
 }		t_data;
 
@@ -78,6 +79,7 @@ void	quit(t_data *all, char *message);
 void	free_split(char **argv2);
 
 int		get_size(char **args);
+int		check_duplicates(t_sort *sort, int i);
 void	fill_stack_a(t_data *all, t_sort *sort, char **args);
 
 void	sort(t_sort *sort, int i, t_data *all);
@@ -93,6 +95,16 @@ void	normalize_stack(t_sort *sort, t_data *all);
 void	optimize_solution(t_sort *sort);
 
 void	wheel_sort(t_sort *sort, t_data *all);
+
+void	get_info_for_a(t_sort *sort, t_wheel *info, int i);
+int		right_place(t_sort *sort, t_wheel *info);
+void	get_info_for_b(t_sort *sort, t_wheel *info);
+void	get_score(t_wheel *info);
+
+void	wheel_pb(t_sort *sort);
+void	do_r(t_sort *sort, t_wheel *info);
+void	do_rr(t_sort *sort, t_wheel *info);
+void	do_mix(t_sort *sort, t_wheel *info);
 
 long	ft_atol(const char *str);
 
