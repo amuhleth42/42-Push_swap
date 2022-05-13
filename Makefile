@@ -6,6 +6,7 @@ LIB		= -L./libft -lft
 
 SRCS_DIR	= srcs
 OBJS_DIR	= $(shell mkdir -p objs && printf "objs")
+OBJS_B_DIR	= $(shell mkdir -p objs_bonus && printf "objs_bonus")
 
 SRCS	=	moves.c				\
 			moves2.c			\
@@ -21,7 +22,23 @@ SRCS	=	moves.c				\
 			wheel_sort3.c		\
 			main.c
 
+SRCS_B	=	moves.c				\
+			moves2.c			\
+			moves3.c			\
+			parsing.c			\
+			exit.c				\
+			print.c				\
+			atol.c				\
+			sort.c				\
+			sort_small.c		\
+			wheel_sort.c		\
+			wheel_sort2.c		\
+			wheel_sort3.c		\
+			checker.c
+
 OBJS	= $(SRCS:%.c=$(OBJS_DIR)/%.o)
+
+OBJS_B	= $(SRCS_B:%.c=$(OBJS_B_DIR)/%.o)
 
 all :		$(NAME)
 
@@ -34,13 +51,17 @@ $(NAME) :	libft.a $(OBJS)
 libft.a :
 	make -C ./libft
 
-bonus : all
-	gcc $(CFLAGS) $(IFLAG) $(LIB) bonus/*.c -o checker
+$(OBJS_B_DIR)/%.o :	bonus/%.c
+	gcc $(CFLAGS) $(IFLAG) -c $< -o $@ -g
+
+bonus : all $(OBJS_B)
+	gcc $(CFLAGS) $(IFLAG) $(LIB) $(OBJS_B) -o checker
 
 clean :
 	make fclean -C ./libft
 	rm -rf $(OBJS_DIR)
 	rm $(NAME)
+	rm -rf $(OBJS_B_DIR)
 	rm checker
 
 fclean :	clean
