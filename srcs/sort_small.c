@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 19:02:11 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/10 18:46:51 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:11:54 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	sort5(t_sort *sort)
 void	sort_small(t_sort *sort, t_data *all)
 {
 	(void) all;
+	if (is_sorted(sort))
+		return ;
 	if (sort->size == 2)
 	{
 		if (!is_sorted(sort))
