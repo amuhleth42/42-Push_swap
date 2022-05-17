@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:32:48 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/11 17:28:36 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:48:04 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 	ft_bzero(&all, sizeof(all));
 	all.score_min = INT_MAX;
 	if (argc < 2)
-		die("Error");
+		return (0);
 	if (argc == 2)
 	{
 		argv2 = ft_split(argv[1], ' ');
