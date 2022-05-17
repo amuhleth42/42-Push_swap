@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:39:31 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/09 19:19:37 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/17 11:09:09 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_smallest(t_sort *sort)
 
 	smallest = INT_MAX;
 	i = 0;
-	while (i < sort->size)
+	while (i < sort->size_a)
 	{
 		if (sort->a[i] < smallest)
 			smallest = sort->a[i];

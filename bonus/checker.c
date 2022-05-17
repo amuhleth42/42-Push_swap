@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 15:38:22 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/05/11 17:23:18 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/05/17 11:19:00 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,7 @@ int	main(int argc, char **argv)
 	char	**argv2;
 
 	if (argc < 2)
-	{
-		ft_putendl_fd("Error", 2);
 		return (0);
-	}
 	if (argc == 2)
 	{
 		argv2 = ft_split(argv[1], ' ');
